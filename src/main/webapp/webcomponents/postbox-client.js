@@ -34,12 +34,12 @@ class PostboxClient extends HTMLElement {
   //PostboxModal;
   	 const dialog = replaceOrCreateTag("postbox-modal");
      await document.body.appendChild(dialog);
-     dialog.load('/postbox/service/postboxEmail?filename='+file); 		
+     dialog.load('/commbox/service/postboxEmail?filename='+file); 		
 		  
   };  
   
   async getEntities() {
-		const response = await fetch (`/postbox/service/postboxEntities`);
+		const response = await fetch (`/commbox/service/postboxEntities`);
 		let files; 
 		
 		try {

@@ -82,7 +82,7 @@ export class PostboxModalTestData extends HTMLElement {
 		else if (document.querySelector("#notify_email").checked)
 			testType = 2;
 			
-        const request = await fetch ("/postbox/service/addTestEmail?type="+testType);
+        const request = await fetch ("/commbox/service/addTestEmail?type="+testType);
 
         if (request.status == 200) {
 		   render(html`Email versendet`,document.querySelector("#emailModalHeader"));

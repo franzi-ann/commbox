@@ -38,7 +38,7 @@ class PostboxLogin extends HTMLElement {
 	const user = document.getElementById("userField").value;
 	const password = document.getElementById("passwordField").value;
 	
-	const response = await fetch (`/postbox/login?email=${user}&password=${password}`,{
+	const response = await fetch (`/commbox/login?email=${user}&password=${password}`,{
 		method:'POST'
 	});
 

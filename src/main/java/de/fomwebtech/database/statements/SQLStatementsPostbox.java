@@ -18,6 +18,7 @@ public class SQLStatementsPostbox {
 	private final ConnectionManager manager;
 	private final Logger logger = LogManager.getLogger(this.getClass());
 
+//Die Methode prüft ob Datenbankverbindung aufgebaut werden kann.	
 	public SQLStatementsPostbox() throws ApplicationException {
 		try {
 			manager = new ConnectionManager("postbox");
@@ -28,6 +29,7 @@ public class SQLStatementsPostbox {
 		}
 	}
 
+//Methode zum Entfernen der Kommunikation
 	public void removeEntry(FileMetaData metaData) {
 		if (manager != null) {
 			Connection con = manager.getConnection();
@@ -51,6 +53,7 @@ public class SQLStatementsPostbox {
 		}
 	}
 	
+	//Methode zum Einfügen der Kommunikation
 	public void addEntry(FileMetaData metaData) {
 
 			
@@ -79,6 +82,11 @@ public class SQLStatementsPostbox {
 			}
 		}
 	}
+	
+
+/*Methode zum Erstellen eines JSON Objektes/Array aus Datenbankinformationen 
+Es wird ein JSON Array mit folgendem Inhalt generiert: email, filename, subject, preview, is_read (wird bisher nicht verwendet),
+insertation_dt, document_dt und zurückgegeben.*/
 	
 	public JSONArray getEntries(String email) {
 
@@ -118,6 +126,9 @@ public class SQLStatementsPostbox {
 		}
 		return jar;
 	}
+
+/*Methode zum Überprüfen der Zugehörigkeit zwischen Email(User) und  Datei(Kommunikation)  
+Es wird ein boolean zurückgegeben.*/
 
 	public boolean validateGetFile(String email,String filename) {
 

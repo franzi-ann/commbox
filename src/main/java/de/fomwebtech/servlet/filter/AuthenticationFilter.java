@@ -86,7 +86,7 @@ public class AuthenticationFilter implements Filter {
 		    		authResponse = auth.post(request);
 		    	}
 		    	else {
-		    		authResponse = auth.get(token);
+		    		authResponse = auth.validateToken(token);
 		    	}
 		    	
 		    	response.setContentType("application/json");

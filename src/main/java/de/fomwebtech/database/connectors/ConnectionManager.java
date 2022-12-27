@@ -8,7 +8,7 @@ import javax.naming.NamingException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-
+/*Methode zum Verbinden mit der Datenbank über Connection Pool aus der Klasse Hikari DataSourceManager*/
 public class ConnectionManager {
 
 		private Logger logger = LogManager.getLogger(this.getClass());	    

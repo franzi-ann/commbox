@@ -15,6 +15,9 @@ import com.zaxxer.hikari.HikariDataSource;
 
 import de.fomwebtech.configuration.ConfigurationHolder3;
 
+/*Die Klasse HikariDataSourceManager wird benötigt Connections Pools, also Verbindungen zur Datenbank zu verwalten. 
+ * Sie enthält Methoden, Datenbankverbindungen herzustellen und diese wieder zu schließen. Hierfür werden externe Parameter übergeben die eine HikariDataSource-Instanz erstellen und dann in einer HAsmap gespeichert werden. 
+ * (wird von der Library HikariCP bereitgestellt - wird importiert).*/
 
 public class HikariDataSourceManager {
 	

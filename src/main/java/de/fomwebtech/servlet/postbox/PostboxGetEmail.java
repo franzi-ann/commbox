@@ -15,8 +15,10 @@ import com.amazonaws.services.s3.model.S3Object;
 
 import de.fomwebtech.database.statements.SQLStatementsPostbox;
 import de.fomwebtech.email.EmailResponseParser;
+import de.fomwebtech.s3.FilePostboxReader;
 import de.fomwebtech.s3.S3PostboxReader;
 import de.fomwebtech.user.User;
+
 
 
 @WebServlet(urlPatterns = ("/service/postboxEmail"))
@@ -32,7 +34,8 @@ public class PostboxGetEmail extends HttpServlet {
         	User user = (User)request.getAttribute("user");
             SQLStatementsPostbox sql = new SQLStatementsPostbox();
             if (filename != null && sql.validateGetFile(user.getEmail(),filename)) {
-            	S3PostboxReader reader = new S3PostboxReader();
+            	//S3PostboxReader reader = new S3PostboxReader();
+            	FilePostboxReader reader = new FilePostboxReader();
             	S3Object s3Object = reader.getFile(filename);
             	
         		if (s3Object == null) {

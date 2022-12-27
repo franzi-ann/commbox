@@ -12,6 +12,7 @@ import de.fomwebtech.configuration.ConfigurationHolder3;
 import de.fomwebtech.database.statements.SQLStatementsPostbox;
 import de.fomwebtech.exception.ApplicationException;
 import de.fomwebtech.exception.ConstraintViolationException;
+import de.fomwebtech.s3.FilePostboxWriter;
 import de.fomwebtech.s3.S3PostboxWriter;
 import jakarta.mail.Address;
 import jakarta.mail.Session;
@@ -35,20 +36,26 @@ public class EmailProcessor {
 		metaData.setCustomerEmail(ias[0].toString());
 		metaData.setSubject(mimeMessage.getSubject());
 		metaData.setDocumentDateEpochMS(mimeMessage.getReceivedDate()!=null?mimeMessage.getReceivedDate().getTime():System.currentTimeMillis());
-		if (mimeMessage.getContentType().startsWith("text")) {
+		if (mimeMessage.getContentType().indexOf("text")>-1) {
 			try {
 				metaData.setPreviewContent( ((String)mimeMessage.getContent()).substring(0, 80));
 			}
 			catch (Exception e) {
-				logger.warn("Exception: ",e);
+				logger.warn("Could not set preview content: ",e);
 			}
 		}
 		else {	
 			try {
 				MimeMultipart mp = (MimeMultipart)mimeMessage.getContent();
 				for (int i=0;i<mp.getCount();i++) {
-					if (mp.getContentType().startsWith("text"))
-						metaData.setPreviewContent( ((String)mimeMessage.getContent()).substring(0, 80));
+					if (mp.getContentType().indexOf("text")>-1) {
+						try {
+							metaData.setPreviewContent( ((String)mimeMessage.getContent()).substring(0, 80));
+						}
+						catch (Exception e) {
+							logger.warn("Could not set preview content: ",e);
+						}
+					}
 				}
 			}
 			catch (Exception e) {
@@ -71,7 +78,8 @@ public class EmailProcessor {
 		sql.addEntry(metaData);
 		
 		try {
-			S3PostboxWriter writer = new S3PostboxWriter();
+			//S3PostboxWriter writer = new S3PostboxWriter();
+			FilePostboxWriter writer = new FilePostboxWriter();
 			writer.saveFile(filename, is);
 		}
 		catch (Exception e) {

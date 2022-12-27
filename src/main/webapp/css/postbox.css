@@ -1,0 +1,45 @@
+body{
+    background-color:#FFFF00;
+    margin: 10px;
+  	padding: 10px;
+}
+
+.main-content{
+    background-color:#FF00FF;
+    border-radius:5px;
+}
+
+.form-control{
+    height:50px;
+    border:2px solid #eee;
+}
+
+.form-control:focus{
+    box-shadow:none;
+    border:2px solid blue;
+}
+
+.search{
+    height:50px;
+    background-color:blue;
+}
+
+
+.card{
+    
+    border:2px solid blue;
+    padding:5px;
+    height:250px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.card .score{
+    font-size:10px;
+}
+
+.card p{
+    font-size:10px;
+    margin-top:20px;
+}

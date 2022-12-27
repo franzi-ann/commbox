@@ -1,36 +1,28 @@
-package de.fomwebtech.communication;
+package de.fomwebtech.testing.email;
 
 import java.util.Properties;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import de.fomwebtech.communication.MailAuthenticator;
+import de.fomwebtech.configuration.ConfigurationHolder3;
+import de.fomwebtech.exception.ApplicationException;
+import jakarta.activation.DataHandler;
+import jakarta.activation.FileDataSource;
 import jakarta.mail.MessagingException;
+import jakarta.mail.Multipart;
 import jakarta.mail.Session;
 import jakarta.mail.Transport;
 import jakarta.mail.internet.AddressException;
 import jakarta.mail.internet.InternetAddress;
+import jakarta.mail.internet.MimeBodyPart;
 import jakarta.mail.internet.MimeMessage;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import jakarta.mail.internet.MimeMultipart;
 
 
-import de.fomwebtech.configuration.ConfigurationHolder3;
-import de.fomwebtech.exception.ApplicationException;
-import de.fomwebtech.init.jobs.EmailTemplateLoader;
-
-
-
-/**
- * 
- * This class handles Emails and transports them to a configured
- * SMTP Gateway which can be configured using the following parametes
- * mail.recipients => All recipients for emails delimiter is ;
- * mail.sender => The sender address
- * mail.smtp.host => IP/Hostname of the SMTP Server
- * mail.smtp.port => Port on which the SMTP Server listens
- */
-
-public class MailSender {
-	
-	private String sender = ConfigurationHolder3.getConfiguration().getString("appconfig.mail.sender", "no-reply@congstar.net");
+public class PostboxTest {
+	private String sender = ConfigurationHolder3.getConfiguration().getString("appconfig.mail.sender", "no-reply@example.com");
 	private String smtpHost = ConfigurationHolder3.getConfiguration().getString("appconfig.mail.smtp.host", "172.25.0.14");
 	private String smtpTLS = ConfigurationHolder3.getConfiguration().getString("appconfig.mail.smtp.starttls.enable","false");
 	private int smtpPort = ConfigurationHolder3.getConfiguration().getInt("appconfig.mail.smtp.port",2501);
@@ -38,9 +30,9 @@ public class MailSender {
 	private int timeout = ConfigurationHolder3.getConfiguration().getInteger("appconfig.mail.smtp.timeout", 10000);
 	private String smtpUser = ConfigurationHolder3.getConfiguration().getString("appconfig.mail.smtp.user", "test");
 	private String smtpPassword = ConfigurationHolder3.getConfiguration().getString("appconfig.mail.smtp.password", "test");
-	private static Logger logger = LogManager.getLogger(MailSender.class);
-
-	public void email(String recipient) throws ApplicationException 
+	private static Logger logger = LogManager.getLogger(PostboxTest.class);	
+	
+	public void email(String recipient,int type) throws ApplicationException 
 	{	
 				
 		try {
@@ -79,9 +71,27 @@ public class MailSender {
 			final InternetAddress to = new InternetAddress(recipient);
 			message.addRecipient(MimeMessage.RecipientType.TO, to);
 
-			message.setSubject(EmailTemplateLoader.getInstance().getSubject());
-			message.setContent(EmailTemplateLoader.getInstance().getEmail(), "text/html;charset=utf-8");
+			if (type==1)
+				message.setHeader("x-archive","true");
+			else if (type == 2) {
+				message.setHeader("x-archive","true");
+				message.setHeader("x-notify","true");				
+			}
 			
+
+			message.setSubject("Postbox Email");
+			MimeBodyPart mbp1 = new MimeBodyPart();
+		    mbp1.setText("Diese Email wird generiert um die Funktion der Postbox zu testen. Sie ist einzig und allein zu Testzwecken gedacht. Wir wollen hier auch nur ein wenig Text schreiben, damit es in der Anzeige nachher nach mehr aussieht...");
+		    FileDataSource fds = new FileDataSource(ConfigurationHolder3.getConfiguration().getString("postbox.test.attachment", "/var/tmp/fl.pdf"));
+		    MimeBodyPart mbp2 = new MimeBodyPart();
+		    mbp2.setDataHandler(new DataHandler(fds));
+		    mbp2.setFileName(fds.getName());
+		    
+		    Multipart mp = new MimeMultipart();
+		    mp.addBodyPart(mbp1);
+		    mp.addBodyPart(mbp2);
+		    
+		    message.setContent(mp);
 			Transport.send(message);
 		}
 		
@@ -96,6 +106,5 @@ public class MailSender {
 			throw new ApplicationException("Beim Versenden der Email ist ein Fehler aufgetreten");
 		}
 	}
-
+	
 }
-

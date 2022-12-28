@@ -17,7 +17,9 @@ import com.amazonaws.services.s3.model.S3Object;
 import de.fomwebtech.configuration.ConfigurationHolder3;
 import de.fomwebtech.exception.ApplicationException;
 
-
+//Ursprünglich wollten wir in ein S3 abspeichern - zu Demozewcken haben wir uns aber für die lokale Ablage entschieden.
+/*Diese Klasse dient dazu, eine Datei aus einem Amazon S3-Bucket zu lesen. Die Klasse nutzt das Amazon S3-API und die AWS SDK für Java,
+ * um die Verbindung zum S3-Dienst herzustellen und die Datei herunterzuladen. */
 public class S3PostboxReader {
 	
 	

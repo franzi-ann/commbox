@@ -14,10 +14,15 @@ import jakarta.mail.Session;
 import jakarta.mail.internet.MimeMessage;
 import jakarta.mail.internet.MimeMultipart;
 
+/*Diese Klasse dient der Email-Anzeige.*/
 public class EmailResponseParser {
 	
 	private Logger logger = LogManager.getLogger(this.getClass());
 
+/*Diese Methode wandelt den Input Stream (MIME Message) in ein JSON Objekt, um dieses anzeigen zu können. Der Inhalt wird als 
+ * Text bzw. alternativ als Mimemultipart (ein Objekt welches aus mehreren Mime Teilen besteht) interpretiert. Falls der Teil 
+ * Text ist, wird der Text in das JSONArray aufgenommen, andernfalls wird der Teil als Base64-codierter String in das JSONArray
+ * aufgenommen.  */
 	public JSONObject parse(InputStream is) {
 		JSONObject response = new JSONObject();
 		JSONArray jar = new JSONArray();

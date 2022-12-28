@@ -18,6 +18,10 @@ import com.amazonaws.services.s3.model.PutObjectResult;
 import de.fomwebtech.configuration.ConfigurationHolder3;
 import de.fomwebtech.exception.ApplicationException;
 
+//Ursprünglich wollten wir in ein S3 abspeichern - zu Demozewcken haben wir uns aber für die lokale Ablage entschieden.
+/*Diese Klasse speichert und löscht Dateien in einem Amazon S3-Bucket. Der S3-Client wird über AWS-Zugangsdaten und den Endpunkt-URL 
+ * für den Zugriff auf den S3-Bucket initialisiert. Die Methode saveFile nimmt einen Dateinamen und einen InputStream entgegen
+ * und speichert die Datei im S3-Bucket. Die Methode delete löscht eine Datei aus dem S3-Bucket anhand des übergegebenen Dateinamen*/
 
 public class S3PostboxWriter {
 	

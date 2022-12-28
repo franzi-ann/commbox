@@ -10,7 +10,7 @@ import com.amazonaws.services.s3.model.S3Object;
 import de.fomwebtech.configuration.ConfigurationHolder3;
 import de.fomwebtech.exception.ApplicationException;
 
-
+/*Diese Klasse dient dazu, Dateien aus einer lokalen Dateiablage zu lesen.*/
 public class FilePostboxReader {
 	
 	
@@ -19,7 +19,9 @@ public class FilePostboxReader {
 
 	private String filePath = ConfigurationHolder3.getConfiguration().getString("postbox.file.path","/var/tmp/postbox");
 
- 
+/*Diese Methode liest eine Datei aus dem angegebenen Pfad und gibt die als S3Objekt zurück.
+ * Hierfür wird ein FileInputStream und ein ObjectMetadata-Objekt erstellt und befüllt.  Dann wird ein S3Object erstellt und die Metadaten
+ * gesetzt. Dann wird der FileInputStream in einen ByteArrayInputStream umgewandelt und dem S3Object als Inhalt zugewiesen.*/ 
 	public S3Object getFile(String objectName) throws IOException, ApplicationException {
 
 		S3Object s3object = null;

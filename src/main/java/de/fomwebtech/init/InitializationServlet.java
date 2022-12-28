@@ -9,10 +9,13 @@ import jakarta.servlet.ServletContextEvent;
 import jakarta.servlet.ServletContextListener;
 import jakarta.servlet.annotation.WebListener;
 
-
+/*Diese Klasse leitet von der Oberklasse ServletContextListener ab, welches Callback-Methoden bereitstellt, 
+ * die von einem Servlet-Container aufgerufen werden wenn das Objekt, das die Web-Anwendung repräsentiert, initialisiert bzw. beendet wird.  */
 @WebListener
 public class InitializationServlet implements ServletContextListener {
 
+/*Diese Methode wird bei Start der Webanwendung aufgerufen. initialisiert das Logging-Framework Log4j, 
+ * initialisiert Hikari-DataSource-Pools und lädt Emailtemplates */
 	public void contextInitialized(ServletContextEvent sce) {
 		
 		System.setProperty("mail.mime.base64.ignoreerrors", "true");
@@ -34,7 +37,9 @@ public class InitializationServlet implements ServletContextListener {
 		Logger.getAnonymousLogger().info("Finished initialization process");
 	
 	}
-	
+/*Diese Methode wird beim Beenden der Webanwendung aufgerufen. 
+ * Die Methode schließt die Hikari-DataSource-Pools und zerstört das Emailtemplate-Objekt. */
+
 	public void contextDestroyed(ServletContextEvent sce) {
 		HikariDataSourceManager.shutDownPools();
 		EmailTemplateLoader.getInstance().destroy();

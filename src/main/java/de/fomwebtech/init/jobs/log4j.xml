@@ -17,3 +17,5 @@
        </Root>
     </Loggers>
 </Configuration>
+
+<!-- Dies ist die Konfigurationsdatei für das Logging-Framework Log4j. Es wird festgelegt in welche logdatei geschrieben wird und wann diese neu angelegt wird mit welchem Namen.n der Datei werden alle Meldungen mit dem Level "debug" oder höher aufgezeichnet.   -->

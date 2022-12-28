@@ -19,12 +19,16 @@ import jakarta.mail.Session;
 import jakarta.mail.internet.MimeMessage;
 import jakarta.mail.internet.MimeMultipart;
 
+/*Diese Klasse ist dafür zuständig eingehende Mails in die Datenbank zu übergeben.*/
 public class EmailProcessor {
 	
 	private Logger logger = LogManager.getLogger(this.getClass());
 	private String notificationHeaderName = ConfigurationHolder3.getConfiguration().getString("postbox.header.notification", "X-Notify");
 	private final int DOCUMENT_TYPE_ID = 2;
-	
+
+/*Diese Methode liest die message, erstellt ein Metadatenobjekt, erstellt und fügt die message inkl. Metadaten in die Datenbank ein. 
+ * Ebenfalls wird geprüft ob der Emailheader"X-Notify" gesetzt ist und ob der Wert dieses Headers "true" ist. Wenn ja soll eine 
+ * Benachrichtigungs-E-Mail an die E-Mail-Adresse des Empfängers gesendet werden. */
 	public void run(String message) throws Exception {
 		
 		Session s = Session.getInstance(new Properties());

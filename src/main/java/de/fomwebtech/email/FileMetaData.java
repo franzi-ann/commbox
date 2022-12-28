@@ -1,5 +1,10 @@
 package de.fomwebtech.email;
 
+
+/*Diese Klasse legt die Metadaten für ein File an. ie Metadaten umfassen den Namen der Datei, die ID des Dokumententyps, die E-Mail-Adresse
+ * des Kunden, den Betreff, den Vorschau-Inhalt, das Standard-Löschdatum in Millisekunden seit dem epoch (01.01.1970) und das Dokumentendatum
+ * in Millisekunden seit dem epoch.  */
+
 public class FileMetaData {
 	private final String filename;
 	private final int documentTypeId;
@@ -41,7 +46,8 @@ public class FileMetaData {
 		this.defaultDeletionEpochMS = defaultDeletionEpochMS;
 	}
 
-
+/*Diese Methode prüft, ob die E-Mail-Adresse des Kunden nicht null ist */
+	
 	public boolean isValidConstraint() {
 		return  customerEmail != null ;
 	}

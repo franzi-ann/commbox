@@ -1,5 +1,6 @@
 package de.fomwebtech.exception;
 
+/*Diese Klasse enthält eigene definierte Exceptions. */
 public class ApplicationException extends Exception {
 
 	/**

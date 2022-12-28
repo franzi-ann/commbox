@@ -8,12 +8,8 @@ import java.util.logging.Logger;
 
 import org.apache.logging.log4j.core.config.Configurator;
 
-/**
- * 
- * @author smocken
- * Just for convenience as there might be no external configuration file
- *
- */
+/*Diese Klasse initialisiert das Logging-Framework Log4j. Zuert wird geprüft, ob die Property log4j.configurationFile gesetzt ist. 
+ * Falls ja, wird diese verwendet. Falls nicht wird log4j.xml aus dem War-File verwendet. Die Methode Configurator.initialize lädt diese dann. */
 
 public class InitializeLog4j
 {

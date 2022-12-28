@@ -12,13 +12,14 @@ import org.apache.logging.log4j.Logger;
 
 import de.fomwebtech.configuration.ConfigurationHolder3;
 
-
+/*Diese Klasse lädt das Template für E-Mails, welches Benachrichtigungen über neue Nachrichten in einem Postfach versendet.*/
 public class EmailTemplateLoader {
 	
 	private static EmailTemplateLoader instance;
 	private static final Timer timer = new Timer();
 	private static String NOTIFICATON_TEMPLATE = "";
 	
+/*Die Klasse enthält den Timer zum erneuten laden und das Template selbst.*/	
 	public static EmailTemplateLoader getInstance() {
 		if (instance==null)
 			instance=new EmailTemplateLoader();
@@ -36,7 +37,7 @@ public class EmailTemplateLoader {
 	}
 	
 	public String getSubject() {
-		return "Neue Naricht in Deinem Postfach!";
+		return "Neue Nachricht in Deinem Postfach!";
 	}
 	
 	private void start() {
@@ -56,7 +57,8 @@ public class EmailTemplateLoader {
 	}
 }
 
-
+/*Diese Klasse stellt eine Funktion zum Laden des Templates bereit. Das Template wird nach Ablauf des Timers neu geladen. 
+ * Das File wird in einer bestimmten Zeichenkodierung (UTF-8) aus der Datei gelesen und als String zurückgegeben */
 class ThreadedLoadTemplate  {
 	
 	private Logger logger = LogManager.getLogger(ThreadedLoadTemplate.class);	

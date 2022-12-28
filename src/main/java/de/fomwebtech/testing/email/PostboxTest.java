@@ -20,7 +20,8 @@ import jakarta.mail.internet.MimeBodyPart;
 import jakarta.mail.internet.MimeMessage;
 import jakarta.mail.internet.MimeMultipart;
 
-
+/* Diese Klasse erstellt TestEmails und leitet sie an das konfigurierte SMTP Gateway. Hierfür werden verschiedene Einstellungen geladen:
+ * E-MAil Absender, Host-Server, Portnummer und die Authentifizierung.  */
 public class PostboxTest {
 	private String sender = ConfigurationHolder3.getConfiguration().getString("appconfig.mail.sender", "no-reply@example.com");
 	private String smtpHost = ConfigurationHolder3.getConfiguration().getString("appconfig.mail.smtp.host", "172.25.0.14");
@@ -31,6 +32,11 @@ public class PostboxTest {
 	private String smtpUser = ConfigurationHolder3.getConfiguration().getString("appconfig.mail.smtp.user", "test");
 	private String smtpPassword = ConfigurationHolder3.getConfiguration().getString("appconfig.mail.smtp.password", "test");
 	private static Logger logger = LogManager.getLogger(PostboxTest.class);	
+	
+/*Diese Methode sendet die Email an den Empfänger. Es wird ein Properties Objekt erstellt, welches Einstellungen für den EMailversand enthält. 
+* Das Session Objekt wird ebenfalls für den EMail Versand verwendet. Das Mime Message Objekt enthält die Email Nachricht. Die EMail wird dann
+* mithilfe des Transportobjektes versendet. Das Transportobjekt wird importiert (jakarta.mail.Transport). Prinzipiell ist die Klasse ähnlich der KLasse
+* Mailsender aufgebaut mit der Besonderheit, dass header direkt mitgegeben und geändert werden können, um so die Funktionalität zu demonstrieren.  */
 	
 	public void email(String recipient,int type) throws ApplicationException 
 	{	

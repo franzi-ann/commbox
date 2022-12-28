@@ -3,6 +3,7 @@ import { replaceOrCreateTag } from "../lib/utils.js";
 import { PostboxModal } from "./postbox-modal.js"
 import { PostboxModalTestData } from "./postbox-modal-testdata.js"
 
+/*Diese KLasse ist die Übersichtsseite der Postbox und enthält alle eingegangene Kommunikation im Überblick*/
 class PostboxClient extends HTMLElement {
   
   constructor() {

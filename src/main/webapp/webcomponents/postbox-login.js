@@ -1,5 +1,6 @@
 import { html, render } from "../lib/lit-html-module.js";
 
+/*Diese Klasse ist die GUI für die Login-Page.*/
 class PostboxLogin extends HTMLElement {
   
   constructor() {

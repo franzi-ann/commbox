@@ -1,7 +1,7 @@
 import { html, render } from "../lib/lit-html-module.js";
 import { Modal } from "../lib/bootstrap.esm.js"
 
-
+/*Diese Klasse ist die Übersichtsseite für das Erstellen der Testobjekte (Add Testdata)*/
 export class PostboxModalTestData extends HTMLElement {
   
   constructor() {

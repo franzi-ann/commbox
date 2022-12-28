@@ -1,7 +1,7 @@
 import { html, render } from "../lib/lit-html-module.js";
 import { Modal } from "../lib/bootstrap.esm.js"
 
-
+/*Diese Klasse dient der Darstellung einzelner Emails*/
 export class PostboxModal extends HTMLElement {
   
   constructor() {

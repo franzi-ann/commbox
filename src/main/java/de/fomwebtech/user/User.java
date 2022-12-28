@@ -2,6 +2,7 @@ package de.fomwebtech.user;
 
 import org.json.JSONObject;
 
+/*Diese Klasse generiert ein Userobjekt mit verschiedenen Parametern.*/
 public class User {
 	
 	private final String email;

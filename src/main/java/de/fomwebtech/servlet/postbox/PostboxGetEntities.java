@@ -14,7 +14,7 @@ import de.fomwebtech.database.statements.SQLStatementsPostbox;
 import de.fomwebtech.user.User;
 
 
-
+/*Diese Klasse dient dazu die Liste aller Kommunikationen eines Users bereitzustellen.*/
 @WebServlet(urlPatterns = ("/service/postboxEntities"))
 public class PostboxGetEntities extends HttpServlet {
     private static final long serialVersionUID = 5652268371771279360L;

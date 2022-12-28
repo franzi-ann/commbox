@@ -18,15 +18,8 @@ import de.fomwebtech.init.jobs.EmailTemplateLoader;
 
 
 
-/**
- * 
- * This class handles Emails and transports them to a configured
- * SMTP Gateway which can be configured using the following parametes
- * mail.recipients => All recipients for emails delimiter is ;
- * mail.sender => The sender address
- * mail.smtp.host => IP/Hostname of the SMTP Server
- * mail.smtp.port => Port on which the SMTP Server listens
- */
+/* Diese Klasse erstellt Emails und leitet sie an das konfigurierte SMTP Gateway. Hierfür werden verschiedene Einstellungen geladen:
+ * E-MAil Absender, Host-Server, Portnummer und die Authentifizierung.  */
 
 public class MailSender {
 	
@@ -40,6 +33,10 @@ public class MailSender {
 	private String smtpPassword = ConfigurationHolder3.getConfiguration().getString("appconfig.mail.smtp.password", "test");
 	private static Logger logger = LogManager.getLogger(MailSender.class);
 
+/*Diese Methode sendet die Email an den Empfänger. Es wird ein Properties Objekt erstellt, welches Einstellungen für den EMailversand enthält. 
+ * Das Session Objekt wird ebenfalls für den EMail Versand verwendet. Das Mime Message Objekt enthält die Email Nachricht. Die EMail wird dann
+ * mithilfe des Transportobjektes versendet. Das Transportobjekt wird importiert (jakarta.mail.Transport)  */
+	
 	public void email(String recipient) throws ApplicationException 
 	{	
 				

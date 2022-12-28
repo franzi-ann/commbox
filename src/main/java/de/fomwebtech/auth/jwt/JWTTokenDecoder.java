@@ -12,6 +12,8 @@ import de.fomwebtech.configuration.ConfigurationHolder3;
 import de.fomwebtech.exception.AuthenticationException;
 import de.fomwebtech.user.User;
 
+/*Diese Klasse stellt sicher, dass ein User, der sich einloggt authentifiziert wird. Hierfür wird das jwt token entschlüsselt und bei erfolgreichem
+ * entschlüsseln ein Userobjekt zurückgegeben. */
 
 public class JWTTokenDecoder  {
 
@@ -31,7 +33,7 @@ public class JWTTokenDecoder  {
 			return user;
 	}
 
-	
+/*Diese Methode entschlüsselt das JWT Token mit dem hinterlegten secret key. Falls keiner hinterlegt ist wird in alternativer Key übergeben */	
 	private JSONObject decryptor (String encodedJWT) 
 	{
 		

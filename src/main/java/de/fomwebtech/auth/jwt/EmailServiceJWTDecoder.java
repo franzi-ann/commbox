@@ -8,7 +8,7 @@ import org.json.JSONObject;
 
 import de.fomwebtech.configuration.ConfigurationHolder3;
 
-
+/*Diese Klasse dient dazu, sicherzustellen, dass nur Mails von einem dedizierten Sender geschickt werden (bei uns ist das der Exim). */
 public class EmailServiceJWTDecoder {
 
 		private Logger logger = LogManager.getLogger(this.getClass());

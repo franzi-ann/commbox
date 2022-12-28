@@ -11,10 +11,15 @@ import io.fusionauth.jwt.Signer;
 import io.fusionauth.jwt.domain.JWT;
 import io.fusionauth.jwt.hmac.HMACSigner;
 
+
+/*Diese Klasse erstellt einen JWT (Java Web Token) Token. */
 public class JWTTokenEncoder {
 	
 	
 	private Logger logger = LogManager.getLogger(this.getClass());
+	
+/*Diese Methode nimmt ein Userobjekt entgegen und erstellt zu diesem User ein JWT Token. Das Token wird mit einem geheimen Schlüssel signiert
+ *  - entweder einem in der Konfiguration hinterlegten oder alternativ mit dem gegebenen. Ebenfalls wird dem JWT eine Gültigkeit mitgegeben. */
 	
 	public String getJWTToken(User user){
 		

@@ -19,6 +19,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 
+/*Diese Klasse lädt verschiedene Einstellungen aus der Konfigurationsdatei.*/
 public class ConfigurationHolder3 {
 	
 	private static final int RELOAD_NOT_REQUIRED=0;
@@ -93,6 +94,8 @@ public class ConfigurationHolder3 {
 	}
 	
 	static private Object m_Sync = new Object();
+	
+/*Diese Methode gibt die aktuelle Konfiguration zurück. Hierfür verwendet sie die BaseHierarchicalConfiguration-Klasse von Apache*/
 	
 	public static BaseHierarchicalConfiguration getConfiguration() {
 		if (reloadRequired!=RELOAD_NOT_REQUIRED) {

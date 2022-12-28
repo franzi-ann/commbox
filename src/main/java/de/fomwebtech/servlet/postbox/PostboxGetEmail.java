@@ -19,13 +19,19 @@ import de.fomwebtech.s3.FilePostboxReader;
 import de.fomwebtech.s3.S3PostboxReader;
 import de.fomwebtech.user.User;
 
-
+/*Diese Klasse erweitert das HttpServlet. Sie wird als Servlet verwendet und verarbeitet HTTP-Anfragen und HTTP-Antworten. Ein HttpServlet 
+ *ist eine Unterklasse der Klasse Servlet und ist dafür entwickelt, HTTP-spezifische Funktionalitäten wie das Verarbeiten verschiedener
+ * HTTP-Methoden (z.B. GET, POST) und das Setzen von HTTP-Headern in Antworten zu verwalten.*/
 
 @WebServlet(urlPatterns = ("/service/postboxEmail"))
 public class PostboxGetEmail extends HttpServlet {
     private static final long serialVersionUID = 5652268371771279360L;
     private Logger logger = LogManager.getLogger(getClass());
 
+/*Diese Methode dient dazu, eingehende HTTP-Anfragen zu verarbeiten und HTTP-Antworten zu erzeugen. Hierfür wird der filename und der user
+ * abgerufen und der user für das file zu validieren. Wenn der filename gültig ist, wird eine Instanz von EmailResponseParser erstellt 
+ * um den Inhalt der Datei in ein JSONObject zu parsen. Die Methode setzt den Inhaltstyp der Antwort auf "application/json" 
+ * und schreibt das JSONObject als String in die Antwort */
     public void service(HttpServletRequest request, HttpServletResponse response) {
 
         try {

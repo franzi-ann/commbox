@@ -22,7 +22,9 @@ import de.fomwebtech.auth.AuthenticationResponse;
 import de.fomwebtech.exception.AuthenticationException;
 import de.fomwebtech.user.User;
 
-
+/*Diese Klasse dient der Überprüfung der Authentifizierung von Anfragen an die Web-Anwendung. Sie implementiert das Filter Interface,
+ *welches Teil des des Java Servlet APIs ist. Es ist eine Zwischenkomponente, welches zwischen dem Client und dem Servlet platziert wird 
+ *und es ermöglicht, HTTP-Anfragen und -Antworten zu manipulieren, bevor sie das Servlet erreichen oder von dort zurück zum Client gesendet werden */
 @WebFilter("/*")
 public class AuthenticationFilter implements Filter {
 
@@ -41,6 +43,12 @@ public class AuthenticationFilter implements Filter {
 		this.context.log("AuthenticationFilter initialized");
 	}
 
+/*Diese Methode dient dazu, sicherzustellen, dass Anfragen von authentifizierten Benutzern stammen. Der Token aus dem HTTP-Header wird gelesen. 
+ * Ebenfalls wird geprüft ob sich die URL der Anfrage in der Liste befindet. Falls ja, wird die Anfrage unverändert durchgereicht.
+ * Falls die URL nicht ausgeschlossen ist, wird überprüft, ob ein Token existiert und ob die URL der Anfrage nicht die URL für den Login ist.
+ * Wenn beides zutrifft, wird der Token überprüft und der Benutzer wird authentifiziert. 
+ * Wenn der Token gültig ist, wird die Anfrage durchgereicht und der User an die Anfrage angehängt. 
+ * Wenn der Token nicht gültig ist, wird ein Fehlercode zurück*/
 	public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain)  {
 
 		HttpServletRequest request = (HttpServletRequest) req;
@@ -51,7 +59,7 @@ public class AuthenticationFilter implements Filter {
 
 		    String token = request.getHeader("token");
   
-		    //Check for registration and other urls which need to be accessed without token
+		    //Überprüfe Registrierung und andere URLs, die ohne Token zugänglich sein müssen
 		    if (excludedURLs.contains(request.getRequestURI())) {
 		    	chain.doFilter(req, res);
 		    	return;

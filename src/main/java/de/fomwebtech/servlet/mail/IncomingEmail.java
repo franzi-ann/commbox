@@ -16,13 +16,15 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
+/*Diese Klasse ist ein Servlet, die dafür zuständig ist, E-Mails an die Anwendung/Frontend zu senden.*/
 @WebServlet(urlPatterns="/api/incomingEMail")
 public class IncomingEmail extends HttpServlet {
 
 	private static final long serialVersionUID = 1717947941937912111L;
 	private Logger logger = LogManager.getLogger(this.getClass());
 
-	
+/*Diese Methode wird aufgerufen, wenn eine POST Anfrage gesendet wird.  Sie liest die im Anfrage-Body enthaltenen Daten ein
+ * und verarbeitet sie mithilfe der Klasse EmailProcessor*/	
 	public void doPost (HttpServletRequest request, HttpServletResponse response) throws IOException 
 	{
 		
@@ -64,7 +66,8 @@ public class IncomingEmail extends HttpServlet {
 		
 	}
 	
-
+/*Die doGet-Methode wird aufgerufen, wenn eine GET-Anfrage an die Servlet gesendet wird. 
+ * Sie liefert jedoch nur einen Fehler zurück, da nur POST-Anfragen verarbeitet werden.*/
 	public void doGet (HttpServletRequest request, HttpServletResponse response) 
 	{
 		

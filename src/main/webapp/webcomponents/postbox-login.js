@@ -78,7 +78,7 @@ class PostboxLogin extends HTMLElement {
 	                     <input type="password" class="form-control" id="passwordField" placeholder="Kennwort">
 	                  </div>
 	                  <br>
-	                  <button type="submit" id="loginButton" class="btn btn-black" style="background-color:#00998a;"  @click=${(e) => { this.doLogin(e); } }>Login</button>
+	                  <button type="submit" id="loginButton" class="btn" style="background-color:#00998a;"  @click=${(e) => { this.doLogin(e); } }>Login</button>
 	               </form>
 	            </div>
 	            <div id="ausgabe"></div>

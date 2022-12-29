@@ -85,9 +85,9 @@ public class PostboxTest {
 			}
 			
 
-			message.setSubject("Postbox Email");
+			message.setSubject("generierte Test Email");
 			MimeBodyPart mbp1 = new MimeBodyPart();
-		    mbp1.setText("Diese Email wird generiert um die Funktion der Postbox zu testen. Sie ist einzig und allein zu Testzwecken gedacht. Wir wollen hier auch nur ein wenig Text schreiben, damit es in der Anzeige nachher nach mehr aussieht...");
+		    mbp1.setText("Diese Email wird generiert um die Funktion der Commbox zu testen. Sie ist einzig und allein zu Testzwecken gedacht. Wir wollen hier auch nur ein wenig Text schreiben, damit es in der Anzeige nachher nach mehr aussieht.");
 		    FileDataSource fds = new FileDataSource(ConfigurationHolder3.getConfiguration().getString("postbox.test.attachment", "/var/tmp/fl.pdf"));
 		    MimeBodyPart mbp2 = new MimeBodyPart();
 		    mbp2.setDataHandler(new DataHandler(fds));

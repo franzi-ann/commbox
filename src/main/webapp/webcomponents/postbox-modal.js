@@ -50,7 +50,7 @@ export class PostboxModal extends HTMLElement {
 		      <div class="modal-body">
 		        <div id="emailModalBody"><span class="sr-only">Loading...</span></div>
 		        <br>
-		        <div id="emailModalDwnld"></div>
+		        <div id="emailModalDwnld" style="background-color:#00998a;"></div>
 		        <div id="loading-error"></div>
 		      </div>
 		      <div class="modal-footer">

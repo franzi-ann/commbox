@@ -107,10 +107,10 @@ class PostboxClient extends HTMLElement {
      
      <div class="header row g-1 mt-1" id="header">
         <div class="col-md-10">
-          <h1>Deine Postbox</h1>
+          <h1>Willkommen in deiner Commbox</h1>
         </div>  
         <div class="col-md-2">
-           <button id="addTestData" type="button" class="btn btn-lg mb-3 w-100 text-uppercase" style="background-color:#E95D0F;" @click=${(e) => {e.preventDefault(); this.addTestData(); } }> <span id="execute-spinner" role="status" class="spinner-border-sm"></span>Add Testdata</button>
+           <button id="addTestData" type="button" class="btn btn-lg mb-3 w-100 text-uppercase" style="background-color:#00998a;" @click=${(e) => {e.preventDefault(); this.addTestData(); } }> <span id="execute-spinner" role="status" class="spinner-border-sm"></span>Testmail generieren</button>
         </div>  
      </div>
      <br>

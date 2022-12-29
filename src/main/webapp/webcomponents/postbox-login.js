@@ -62,7 +62,7 @@ class PostboxLogin extends HTMLElement {
      return html`
 		<div class="sidenav">
 	         <div class="login-main-text">
-	            <h2>Commbox<br> Login Page</h2>
+	            <h2>Commbox<br> Login</h2>
 	         </div>
 	      </div>
 	      <div class="main">
@@ -70,15 +70,15 @@ class PostboxLogin extends HTMLElement {
 	            <div class="login-form">
 	               <form>
 	                  <div class="form-group">
-	                     <label>User Name</label>
-	                     <input type="text" class="form-control" id="userField" placeholder="User Name">
+	                     <label>Username</label>
+	                     <input type="text" class="form-control" id="userField" placeholder="Username">
 	                  </div>
 	                  <div class="form-group">
-	                     <label>Password</label>
-	                     <input type="password" class="form-control" id="passwordField" placeholder="Password">
+	                     <label>Kennwort</label>
+	                     <input type="password" class="form-control" id="passwordField" placeholder="Kennwort">
 	                  </div>
 	                  <br>
-	                  <button type="submit" class="btn btn-black" id="loginButton" @click=${(e) => { this.doLogin(e); } }>Login</button>
+	                  <button type="submit" id="loginButton" class="btn btn-black" style="background-color:#00998a;"  @click=${(e) => { this.doLogin(e); } }>Login</button>
 	               </form>
 	            </div>
 	            <div id="ausgabe"></div>

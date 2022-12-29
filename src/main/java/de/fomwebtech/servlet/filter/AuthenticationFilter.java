@@ -12,6 +12,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.ServletRequest;
 import jakarta.servlet.ServletResponse;
 import jakarta.servlet.annotation.WebFilter;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.apache.logging.log4j.LogManager;
@@ -58,6 +59,12 @@ public class AuthenticationFilter implements Filter {
 			logger.debug("Filtering request");
 
 		    String token = request.getHeader("token");
+		    
+		    if (token==null && request.getCookies()!=null)
+			    for (Cookie cookie:request.getCookies()) {
+			    	if (cookie.getName().matches("token"))
+			    		token=cookie.getValue();
+			    }
   
 		    //Überprüfe Registrierung und andere URLs, die ohne Token zugänglich sein müssen
 		    if (excludedURLs.contains(request.getRequestURI())) {
@@ -99,6 +106,9 @@ public class AuthenticationFilter implements Filter {
 		    	
 		    	response.setContentType("application/json");
 		    	response.setStatus(authResponse.getHttpStatus());
+		    	if (authResponse.getHttpStatus()==HttpServletResponse.SC_OK) {
+			    	response.addCookie(new Cookie("token",authResponse.getJson().getString("token")));
+		    	}
 				PrintWriter wr = response.getWriter();
 				wr.write(authResponse.getJson().toString());
 				wr.flush();

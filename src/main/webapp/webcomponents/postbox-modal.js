@@ -50,7 +50,7 @@ export class PostboxModal extends HTMLElement {
 		      <div class="modal-body">
 		        <div id="emailModalBody"><span class="sr-only">Loading...</span></div>
 		        <br>
-		        <div id="emailModalDwnld" style="background-color:#00998a;"></div>
+		        <div id="emailModalDwnld"></div>
 		        <div id="loading-error"></div>
 		      </div>
 		      <div class="modal-footer">
@@ -85,7 +85,7 @@ export class PostboxModal extends HTMLElement {
             		if (matches != null && matches[1]) {
             			var filename = matches[1].replace(/['"]/g, '');
             			dwnldContent += `<div class="col-3">
-            			<a download="${filename}" type="button" class="btn btn-dark btn-lg" href="data:${splitted[0].trim()};base64,${item["content"]}"><i class="bi bi-download"></i> Download</a>
+            			<a download="${filename}" type="button" class="btn btn-lg" style="background-color:#00998a;" href="data:${splitted[0].trim()};base64,${item["content"]}"><i class="bi bi-download"></i> Download</a>
             			</div>`
 					}
 				}

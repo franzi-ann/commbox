@@ -63,7 +63,7 @@ export class PostboxModalTestData extends HTMLElement {
 		        </div>
 		        <br>
 		        <div id="emailModalBtn">
-		        	<button id="addTestData" type="button" class="btn btn-lg mb-3 w-100 text-uppercase" style="background-color:#00998a;" @click=${() => { this.sendEmail() } }>Email senden</button
+		        	<button id="addTestData" type="button" class="btn btn-lg mb-3 w-100 text-uppercase" style="background-color:#00998a;" @click=${() => { this.sendEmail() } }>E-Mail senden</button
 		        </div>
 		      </div>
 		      <div class="modal-footer">

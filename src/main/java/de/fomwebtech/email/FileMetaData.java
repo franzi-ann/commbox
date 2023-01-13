@@ -1,7 +1,7 @@
 package de.fomwebtech.email;
 
 
-/*Diese Klasse legt die Metadaten für ein File an. ie Metadaten umfassen den Namen der Datei, die ID des Dokumententyps, die E-Mail-Adresse
+/*Diese Klasse legt die Metadaten für ein File an. Die Metadaten umfassen den Namen der Datei, die ID des Dokumententyps, die E-Mail-Adresse
  * des Kunden, den Betreff, den Vorschau-Inhalt, das Standard-Löschdatum in Millisekunden seit dem epoch (01.01.1970) und das Dokumentendatum
  * in Millisekunden seit dem epoch.  */
 

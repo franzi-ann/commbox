@@ -45,7 +45,7 @@ export class PostboxModalTestData extends HTMLElement {
 		  <div class="modal-dialog" role="document">
 		    <div class="modal-content">
 		      <div class="modal-header">
-		        <div id="emailModalHeader"><h1 class="modal-title fs-5" id="staticBackdropLabel">Test Email generieren</h1></div>
+		        <div id="emailModalHeader"><h1 class="modal-title fs-5" id="staticBackdropLabel">Test E-Mail generieren</h1></div>
 		      </div>
 		      <div class="modal-body">
 		        <div id="emailModalBody">

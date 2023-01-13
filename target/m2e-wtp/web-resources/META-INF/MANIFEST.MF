@@ -17,10 +17,10 @@ Implementation-Vendor-Id: de.fomwebtech
 Build-Date: 
 Built-By: fbecker
 Built-OS: Windows 10
-Compile-Time: 2022-12-27T16:46:49Z
+Compile-Time: 2023-01-09T13:39:17Z
 Created-By: Maven Integration for Eclipse
 Implementation-Title: commbox
 git-branch: main
-git-revision-id: d578260fe308241b5b85404bfb08d0fb0f95c74d
-git-revision-time: 27.12.2022 17:43:34
+git-revision-id: 37915be6bbdac73c4d4495ec2e5fbd4668e587e4
+git-revision-time: 29.12.2022 14:30:34
 
